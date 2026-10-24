@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "renames": [
+    {
+      "kind": "function",
+      "from": "parse_amount",
+      "to": "parse_money"
+    },
+    {
+      "kind": "type",
+      "from": "Money",
+      "to": "Cash"
+    },
+    {
+      "kind": "function",
+      "from": "encode",
+      "to": "encode_bytes"
+    },
+    {
+      "kind": "function",
+      "from": "Buffer::write",
+      "to": "Buffer::write_all"
+    }
+  ]
+}

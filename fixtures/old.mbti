@@ -1,0 +1,12 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "example/money"
+
+pub fn parse_amount(input : StringView, currency? : String = "CNY") -> Int raise
+
+pub fn stable(value : Int) -> Int
+
+pub type Money = Int
+
+pub fn encode(Bytes) -> String
+
+pub fn Buffer::write(Self, StringView) -> Unit

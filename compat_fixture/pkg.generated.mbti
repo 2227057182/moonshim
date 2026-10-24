@@ -1,0 +1,30 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "local/moonshim/compat_fixture"
+
+// Values
+pub fn encode(Bytes) -> String
+
+pub fn encode_bytes(Bytes) -> String
+
+pub fn parse_amount(StringView, currency? : String) -> Int32 raise
+
+pub fn parse_money(StringView, currency? : String) -> Int32 raise
+
+pub fn stable(Int32) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct Buffer {
+  value : String
+}
+pub fn Buffer::new() -> Self
+pub fn Buffer::write(Self, StringView) -> Unit
+pub fn Buffer::write_all(Self, StringView) -> Unit
+
+// Type aliases
+pub type Cash = Int32
+
+pub type Money = Int32
+
+// Traits
