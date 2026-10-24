@@ -47,7 +47,7 @@ Requirements: MoonBit 0.10.17 or newer and Node.js for the CLI target.
 Install the library:
 
 ```bash
-moon add 2227057182/moonshim@0.1.0
+moon add 2227057182/moonshim@0.1.1
 ```
 
 Develop the CLI from source:
@@ -102,7 +102,7 @@ Run `moon fmt` after generation and before committing the shim.
 ## Example output
 
 ```text
-MoonShim: 0 added, 4 shimmable, 0 blocked, 4 shim declaration(s)
+MoonShim: 0 added, 5 shimmable, 0 blocked, 5 shim declaration(s)
 ```
 
 ```mbt

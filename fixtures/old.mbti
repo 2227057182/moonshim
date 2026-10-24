@@ -10,3 +10,7 @@ pub type Money = Int
 pub fn encode(Bytes) -> String
 
 pub fn Buffer::write(Self, StringView) -> Unit
+
+pub struct Box[T] {
+  value : T
+}

@@ -20,3 +20,6 @@ pub fn encode(arg0 : Bytes) -> String {
 pub fn Buffer::write(self : Self, arg1 : StringView) -> Unit {
   Buffer::write_all(self, arg1)
 }
+
+///|
+pub type Box[T] = Crate[T]

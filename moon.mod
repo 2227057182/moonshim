@@ -11,7 +11,7 @@
 
 name = "2227057182/moonshim"
 
-version = "0.1.0"
+version = "0.1.1"
 
 readme = "README.md"
 

@@ -38,3 +38,9 @@ pub fn Buffer::write_all(self : Self, value : StringView) -> Unit {
   ignore(self)
   ignore(value)
 }
+
+///|
+#warnings("-struct_never_constructed")
+pub struct Crate[T] {
+  value : T
+}

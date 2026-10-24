@@ -20,6 +20,11 @@
       "kind": "function",
       "from": "Buffer::write",
       "to": "Buffer::write_all"
+    },
+    {
+      "kind": "struct",
+      "from": "Box",
+      "to": "Crate"
     }
   ]
 }

@@ -24,3 +24,6 @@ pub fn Buffer::write(
   Buffer::write_all(self, arg1)
 }
 
+///|
+pub type Box[T] = Crate[T]
+

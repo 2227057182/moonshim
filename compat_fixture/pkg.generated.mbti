@@ -22,6 +22,11 @@ pub fn Buffer::new() -> Self
 pub fn Buffer::write(Self, StringView) -> Unit
 pub fn Buffer::write_all(Self, StringView) -> Unit
 
+#alias(Box)
+pub struct Crate[T] {
+  value : T
+}
+
 // Type aliases
 pub type Cash = Int32
 

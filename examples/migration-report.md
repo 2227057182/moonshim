@@ -2,8 +2,8 @@
 
 - Old interface: `fixtures/old.mbti`
 - New interface: `fixtures/new.mbti`
-- Changes: 4
-- Generated shims: 4
+- Changes: 5
+- Generated shims: 5
 - Review required: false
 
 ## Changes
@@ -14,6 +14,7 @@
 | SHIM | type | `Money` | `Cash` | Explicit rename rule maps APIs with compatible public shapes. |
 | SHIM | function | `encode` | `encode_bytes` | Explicit rename rule maps APIs with compatible public shapes. |
 | SHIM | function | `Buffer::write` | `Buffer::write_all` | Explicit rename rule maps APIs with compatible public shapes. |
+| SHIM | struct | `Box` | `Crate` | Explicit rename rule maps APIs with compatible public shapes. |
 
 ## Generated shims
 
@@ -38,4 +39,6 @@ pub fn Buffer::write(
 ) -> Unit {
   Buffer::write_all(self, arg1)
 }
+///|
+pub type Box[T] = Crate[T]
 ```

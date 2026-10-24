@@ -7,8 +7,9 @@
     {"status": "SHIM", "change": "renamed", "kind": "function", "old_name": "parse_amount", "new_name": "parse_money", "reason": "Explicit rename rule maps APIs with compatible public shapes."},
     {"status": "SHIM", "change": "renamed", "kind": "type", "old_name": "Money", "new_name": "Cash", "reason": "Explicit rename rule maps APIs with compatible public shapes."},
     {"status": "SHIM", "change": "renamed", "kind": "function", "old_name": "encode", "new_name": "encode_bytes", "reason": "Explicit rename rule maps APIs with compatible public shapes."},
-    {"status": "SHIM", "change": "renamed", "kind": "function", "old_name": "Buffer::write", "new_name": "Buffer::write_all", "reason": "Explicit rename rule maps APIs with compatible public shapes."}
+    {"status": "SHIM", "change": "renamed", "kind": "function", "old_name": "Buffer::write", "new_name": "Buffer::write_all", "reason": "Explicit rename rule maps APIs with compatible public shapes."},
+    {"status": "SHIM", "change": "renamed", "kind": "struct", "old_name": "Box", "new_name": "Crate", "reason": "Explicit rename rule maps APIs with compatible public shapes."}
   ],
   "diagnostics": [],
-  "shim_count": 4
+  "shim_count": 5
 }

@@ -22,13 +22,69 @@ fn same_function_shape(old : ApiSymbol, new : ApiSymbol) -> Bool {
 }
 
 ///|
+fn type_parameter_names(symbol : ApiSymbol) -> Array[String] {
+  let name_index = match symbol.signature.find(symbol.name) {
+    Some(index) => index
+    None => return []
+  }
+  let open_index = skip_space(
+    symbol.signature,
+    name_index + symbol.name.length(),
+  )
+  if open_index >= symbol.signature.length() {
+    return []
+  }
+  let open = symbol.signature.get_char(open_index).unwrap()
+  if open != '[' {
+    return []
+  }
+  let close_index = skip_balanced(symbol.signature, open_index, '[', ']') - 1
+  if close_index <= open_index {
+    return []
+  }
+  let result = []
+  for raw in split_top_level(symbol.signature[open_index + 1:close_index]) {
+    let text = raw.trim()
+    let mut start = 0
+    while start < text.length() {
+      let ch = text.get_char(start).unwrap()
+      if ch == '+' || ch == '-' || ch.is_whitespace() {
+        start += 1
+      } else {
+        break
+      }
+    }
+    let (name, _) = read_identifier(text, start)
+    if !name.is_empty() {
+      result.push(name)
+    }
+  }
+  result
+}
+
+///|
+fn join_type_parameters(parameters : Array[String]) -> String {
+  let builder = StringBuilder()
+  for index, parameter in parameters {
+    if index > 0 {
+      builder.write_string(", ")
+    }
+    builder.write_string(parameter)
+  }
+  builder.to_string()
+}
+
+///|
 fn same_type_body(old : ApiSymbol, new : ApiSymbol) -> Bool {
+  let old_parameters = type_parameter_names(old)
+  let new_parameters = type_parameter_names(new)
   same_symbol_kind(old.kind, new.kind) &&
   (
     same_symbol_kind(old.kind, TypeAlias) ||
     same_symbol_kind(old.kind, Struct) ||
     same_symbol_kind(old.kind, Enum)
   ) &&
+  old_parameters.length() == new_parameters.length() &&
   type_body(old) == type_body(new) &&
   !type_body(old).is_empty()
 }
@@ -136,7 +192,13 @@ fn generate_function_shim(old : ApiSymbol, new : ApiSymbol) -> String {
 
 ///|
 fn generate_type_shim(old : ApiSymbol, new : ApiSymbol) -> String {
-  "///|\npub type \{old.name} = \{new.name}\n"
+  let parameters = type_parameter_names(old)
+  if parameters.is_empty() {
+    "///|\npub type \{old.name} = \{new.name}\n"
+  } else {
+    let parameter_text = join_type_parameters(parameters)
+    "///|\npub type \{old.name}[\{parameter_text}] = \{new.name}[\{parameter_text}]\n"
+  }
 }
 
 ///|

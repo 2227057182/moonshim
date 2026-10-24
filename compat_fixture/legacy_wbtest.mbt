@@ -6,4 +6,7 @@ test "legacy caller compiles unchanged through generated shim" {
   assert_eq(encode(b"moon"), "4")
   let buffer = Buffer::new()
   Buffer::write(buffer, "payload")
+  let crate_value : Crate[Int32] = Crate::{ value: 7, }
+  let legacy_box : Box[Int32] = crate_value
+  assert_eq(legacy_box.value, 7)
 }

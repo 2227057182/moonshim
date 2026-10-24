@@ -10,3 +10,7 @@ pub type Cash = Int
 pub fn encode_bytes(Bytes) -> String
 
 pub fn Buffer::write_all(Self, StringView) -> Unit
+
+pub struct Crate[T] {
+  value : T
+}

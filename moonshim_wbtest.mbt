@@ -65,3 +65,84 @@ test "method interfaces preserve receiver syntax" {
   )
   assert_true(source.contains("Buffer::write_all(self, arg1)"))
 }
+
+///|
+test "generic type renames preserve type parameters" {
+  let previous =
+    #|package "example/api"
+    #|pub struct Box[T] {
+    #|  value : T
+    #|}
+  let current =
+    #|package "example/api"
+    #|pub struct Crate[T] {
+    #|  value : T
+    #|}
+  let rules = [
+    MigrationRule::{ symbol_kind: Struct, old_name: "Box", new_name: "Crate", },
+  ]
+  let plan = plan_migration(
+    parse_interface(previous),
+    parse_interface(current),
+    rules,
+  )
+  assert_false(has_unresolved_breaking_changes(plan))
+  let source = render_shim_source(plan)
+  assert_true(source.contains("pub type Box[T] = Crate[T]"))
+}
+
+///|
+test "generic enum renames preserve type parameters" {
+  let previous =
+    #|package "example/api"
+    #|pub enum Maybe[T] {
+    #|  Some(T)
+    #|  None
+    #|}
+  let current =
+    #|package "example/api"
+    #|pub enum Optional[T] {
+    #|  Some(T)
+    #|  None
+    #|}
+  let rules = [
+    MigrationRule::{
+      symbol_kind: Enum,
+      old_name: "Maybe",
+      new_name: "Optional",
+    },
+  ]
+  let plan = plan_migration(
+    parse_interface(previous),
+    parse_interface(current),
+    rules,
+  )
+  assert_false(has_unresolved_breaking_changes(plan))
+  assert_true(
+    render_shim_source(plan).contains("pub type Maybe[T] = Optional[T]"),
+  )
+}
+
+///|
+test "generic arity mismatch blocks type aliases" {
+  let previous =
+    #|package "example/api"
+    #|pub type Legacy[T] = Int
+  let current =
+    #|package "example/api"
+    #|pub type Current = Int
+  let rules = [
+    MigrationRule::{
+      symbol_kind: TypeAlias,
+      old_name: "Legacy",
+      new_name: "Current",
+    },
+  ]
+  let plan = plan_migration(
+    parse_interface(previous),
+    parse_interface(current),
+    rules,
+  )
+  assert_true(has_unresolved_breaking_changes(plan))
+  assert_eq(plan.shim_sources.length(), 0)
+}
