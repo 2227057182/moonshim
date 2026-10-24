@@ -1,0 +1,110 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "local/moonshim"
+
+// Values
+pub fn change_kind_name(ChangeKind) -> String
+
+pub fn find_symbol(ApiSnapshot, SymbolKind, StringView) -> ApiSymbol?
+
+pub fn has_unresolved_breaking_changes(MigrationPlan) -> Bool
+
+pub fn parameter_mode_name(ParameterMode) -> String
+
+pub fn parse_interface(StringView) -> ApiSnapshot
+
+pub fn plan_migration(ApiSnapshot, ApiSnapshot, Array[MigrationRule]) -> MigrationPlan
+
+pub fn render_json(MigrationPlan, StringView, StringView) -> String
+
+pub fn render_markdown(MigrationPlan, StringView, StringView) -> String
+
+pub fn render_shim_source(MigrationPlan) -> String
+
+pub fn rules_from_json(StringView) -> Array[MigrationRule] raise RuleError
+
+pub fn rules_to_json(Array[MigrationRule]) -> String
+
+pub fn same_parameter_mode(ParameterMode, ParameterMode) -> Bool
+
+pub fn same_symbol_kind(SymbolKind, SymbolKind) -> Bool
+
+pub fn symbol_key(SymbolKind, StringView) -> String
+
+pub fn symbol_kind_name(SymbolKind) -> String
+
+// Errors
+pub(all) suberror RuleError {
+  RuleError(String)
+}
+
+// Types and methods
+pub(all) struct ApiChange {
+  change_kind : ChangeKind
+  symbol_kind : SymbolKind
+  old_name : String?
+  new_name : String?
+  old_signature : String?
+  new_signature : String?
+  safely_shimmable : Bool
+  reason : String
+}
+
+pub(all) struct ApiSnapshot {
+  package_name : String
+  symbols : Array[ApiSymbol]
+}
+
+pub(all) struct ApiSymbol {
+  kind : SymbolKind
+  name : String
+  signature : String
+  parameters : Array[Parameter]
+  result_text : String
+}
+
+pub(all) enum ChangeKind {
+  Added
+  Removed
+  Renamed
+  SignatureChanged
+  BodyChanged
+}
+
+pub(all) struct MigrationPlan {
+  changes : Array[ApiChange]
+  shim_sources : Array[String]
+  diagnostics : Array[String]
+}
+
+pub(all) struct MigrationRule {
+  symbol_kind : SymbolKind
+  old_name : String
+  new_name : String
+}
+
+pub(all) struct Parameter {
+  name : String
+  type_text : String
+  mode : ParameterMode
+  default_value : String?
+}
+
+pub(all) enum ParameterMode {
+  Positional
+  Optional
+  Labelled
+  Receiver
+}
+
+pub(all) enum SymbolKind {
+  Function
+  TypeAlias
+  Struct
+  Enum
+  Trait
+  Value
+}
+
+// Type aliases
+
+// Traits
