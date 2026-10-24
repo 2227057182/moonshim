@@ -85,6 +85,7 @@ moon run cmd/main -- diff old.mbti new.mbti \
 
 `--fail-on-breaking` exits with status `2` if any change still requires manual
 review. A partial shim may still be generated so that safe changes can proceed.
+Run `moon fmt` after generation and before committing the shim.
 
 ## Example output
 
