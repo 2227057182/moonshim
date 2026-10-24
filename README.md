@@ -4,6 +4,8 @@
 
 **Compile-tested compatibility shims for evolving MoonBit APIs.**
 
+Published on [Mooncakes](https://mooncakes.io/docs/2227057182/moonshim).
+
 MoonShim compares two generated `.mbti` interfaces and turns explicitly approved,
 shape-compatible renames into a MoonBit compatibility layer. It also reports
 breaking changes that need human review instead of guessing at their semantics.
@@ -41,6 +43,14 @@ signature. A rename must be declared by the maintainer.
 ## Quick start
 
 Requirements: MoonBit 0.10.17 or newer and Node.js for the CLI target.
+
+Install the library:
+
+```bash
+moon add 2227057182/moonshim@0.1.0
+```
+
+Develop the CLI from source:
 
 ```bash
 git clone https://github.com/2227057182/moonshim.git
