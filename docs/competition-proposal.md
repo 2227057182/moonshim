@@ -48,7 +48,7 @@ MoonShim：可编译的 MoonBit 公共 API 迁移适配器
 
 ## 项目仓库
 
-GitHub：本仓库
+GitHub：https://github.com/2227057182/moonshim
 
 ## 参赛者
 

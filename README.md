@@ -1,5 +1,7 @@
 # MoonShim
 
+[![CI](https://github.com/2227057182/moonshim/actions/workflows/ci.yml/badge.svg)](https://github.com/2227057182/moonshim/actions/workflows/ci.yml)
+
 **Compile-tested compatibility shims for evolving MoonBit APIs.**
 
 MoonShim compares two generated `.mbti` interfaces and turns explicitly approved,
@@ -41,7 +43,7 @@ signature. A rename must be declared by the maintainer.
 Requirements: MoonBit 0.10.17 or newer and Node.js for the CLI target.
 
 ```bash
-git clone <this-repository>
+git clone https://github.com/2227057182/moonshim.git
 cd moonshim
 moon update
 moon check --deny-warn
