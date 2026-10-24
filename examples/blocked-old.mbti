@@ -1,0 +1,3 @@
+package "example/service"
+
+pub fn encode(value : Int) -> String

@@ -1,0 +1,3 @@
+package "example/service"
+
+pub fn render(value : Int) -> Int

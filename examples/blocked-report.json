@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "old_interface": "examples/blocked-old.mbti",
+  "new_interface": "examples/blocked-new.mbti",
+  "review_required": true,
+  "changes": [
+    {"status": "BLOCK", "change": "removed", "kind": "function", "old_name": "encode", "new_name": null, "reason": "Removed API has no explicit migration rule."},
+    {"status": "ADD", "change": "added", "kind": "function", "old_name": null, "new_name": "render", "reason": "Additive public API."}
+  ],
+  "diagnostics": [],
+  "shim_count": 0
+}
