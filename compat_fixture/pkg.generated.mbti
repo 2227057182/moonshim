@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "local/moonshim/compat_fixture"
+package "2227057182/moonshim/compat_fixture"
 
 // Values
 pub fn encode(Bytes) -> String

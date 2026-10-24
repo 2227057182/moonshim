@@ -1,5 +1,5 @@
 import {
-  "local/moonshim",
+  "2227057182/moonshim",
   "moonbitlang/core/env",
   "moonbitlang/x/fs",
   "moonbitlang/x/sys",

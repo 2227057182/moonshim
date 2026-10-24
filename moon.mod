@@ -9,13 +9,13 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "local/moonshim"
+name = "2227057182/moonshim"
 
 version = "0.1.0"
 
 readme = "README.md"
 
-repository = ""
+repository = "https://github.com/2227057182/moonshim"
 
 license = "Apache-2.0"
 
